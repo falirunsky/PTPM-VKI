@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sample Forum Thread</title>
+</head>
+<body>
+<div class="thread">
+    <div class="comment" data-comment-id="1">
+        <span class="username">alice</span>
+        <div class="content">Hello <b>world</b></div>
+    </div>
+    <div class="comment" data-comment-id="2">
+        <span class="username">bob</span>
+        <div class="content">Second message</div>
+    </div>
+    <div class="comment" data-comment-id="3">
+        <span class="username">alice</span>
+        <div class="content">Reply from <i>alice</i></div>
+    </div>
+    <div class="comment" data-comment-id="not-a-number">
+        <span class="username">broken</span>
+        <div class="content">Should be skipped</div>
+    </div>
+    <div class="comment" data-comment-id="4">
+        <div class="content">Missing username - skipped</div>
+    </div>
+</div>
+</body>
+</html>
