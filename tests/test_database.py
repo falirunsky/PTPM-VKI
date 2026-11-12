@@ -10,7 +10,6 @@ class TestDatabaseRepository(unittest.TestCase):
     def tearDown(self):
         self.repo.close()
 
-    # ---- add ----
     def test_add_success(self):
         self.assertTrue(self.repo.add(1, "alice", "hi"))
         row = self.repo.get_by_id(1)
@@ -33,7 +32,7 @@ class TestDatabaseRepository(unittest.TestCase):
         with self.assertRaises(TypeError):
             self.repo.add("1", "alice", "hi")
 
-    # ---- get_by_id ----
+
     def test_get_by_id_existing(self):
         self.repo.add(5, "carol", "hello")
         self.assertEqual(
@@ -44,7 +43,7 @@ class TestDatabaseRepository(unittest.TestCase):
     def test_get_by_id_missing_returns_none(self):
         self.assertIsNone(self.repo.get_by_id(999))
 
-    # ---- get_by_name ----
+
     def test_get_by_name_returns_all_matches(self):
         self.repo.add(1, "alice", "one")
         self.repo.add(2, "bob", "two")
@@ -56,7 +55,7 @@ class TestDatabaseRepository(unittest.TestCase):
     def test_get_by_name_empty_returns_empty_list(self):
         self.assertEqual(self.repo.get_by_name("nobody"), [])
 
-    # ---- update ----
+
     def test_update_existing(self):
         self.repo.add(1, "alice", "old")
         self.assertTrue(self.repo.update(1, "new"))
@@ -70,7 +69,7 @@ class TestDatabaseRepository(unittest.TestCase):
         with self.assertRaises(ValueError):
             self.repo.update(1, "x" * (DatabaseRepository.MAX_MESSAGE_LEN + 1))
 
-    # ---- delete ----
+
     def test_delete_existing(self):
         self.repo.add(1, "alice", "hi")
         self.assertTrue(self.repo.delete(1))
